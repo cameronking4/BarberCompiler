@@ -93,7 +93,7 @@
     <div class="row">
         <div  class="col-md-12  header">
             <h4>
-              <p class="text-center" style="font-size: 25px;">Travel and Entertainment Search</p>
+              <p class="text-center" style="font-size: 25px;">Barbershop Review Compiler- Yelp & Google Search Results</p>
             </h4>
         </div>
     </div>
@@ -103,11 +103,12 @@
         <label for="keyword" class="col-md-2" >Keyword<span style="color: red">*</span></label>
 
         <div class="col-md-6 ">
-            <input type="text" class="form-control" id="keyword" name="keyword" ng-model="keyword" required  ng-blur="change=true">
+            <input type="text" class="form-control" id="keyword" name="keyword" ng-model="keyword" placeholder="barber" required  ng-blur="change=true">
             <span style="color:red" ng-show="myform.keyword.$invalid&&myform.keyword.$dirty&&change">Please enter a keyword</span>
         </div>
     </div>
 
+<!--
     <div class="form-group row">
         <div class="col-md-2 "></div>
         <label for="category" class="col-md-2 ">Category</label>
@@ -120,6 +121,7 @@
             <option value="art_gallery">Art Gallery</option>
             <option value="bakery">Bakery</option>
             <option value="bar">Bar</option>
+
             <option value="beauty_salon">Beauty Salon</option>
             <option value="bowling_alley">Bowling Alley</option>
             <option value="bus_station">Bus Station</option>
@@ -142,9 +144,11 @@
             <option value="transit_station">Transit Station</option>
             <option value="travel_agency">Travel Agency</option>
             <option value="zoo">Zoo</option>
+
         </select>
         </div>
     </div>
+-->
 
     <div class="form-group row">
         <div class="col-md-2 "></div>
@@ -190,7 +194,6 @@
 <div class="container text-center" style="margin-top: 20px;">
     <div class="container-fluid " style="margin-bottom: 25px;">
             <button class="btn btn-primary resultsbutton"  ng-click="showresults();">Results</button>
-            <button class="btn favoritesbutton"  ng-click="showfavorite();" >Favorites</button>
     </div>   
 </div>
 
@@ -200,6 +203,7 @@
 	</div>
 </div>
 
+<!--
 <div ng-show="favoritesoption">
   <div class="container">
 
@@ -215,10 +219,8 @@
         <tbody>
             <tr ng-repeat="x in favoritepage" >
             <td style="min-width: 10%; vertical-align: middle !important;">{{$index+1}}</td>
-            <td style="min-width: 20%;vertical-align: middle !important;"><img src="{{x.icon}}"></td>
             <td style="min-width: 30%;vertical-align: middle !important;">{{x.name}}</td>
             <td style="min-width: 30%;vertical-align: middle !important;">{{x.vicinity}}</td>
-            <td style="min-width: 5%;vertical-align: middle !important;"><button style="border-color: rgb(204,204,204);" class='btn btn-default' ng-click="deletefavorites($index)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
             <td style="min-width: 5%;vertical-align: middle !important;"><button style="border-color: rgb(204,204,204);" class='btn btn-default' ng-click="showdetails(x.place_id)"><i class="fa fa-angle-right" style="font-size:20px"></i></button></td>
             </tr>
         </tbody>
@@ -230,6 +232,7 @@
     </div>
   </div>
 </div>
+-->
 
 
 <div  ng-show="resultsoption">
@@ -239,19 +242,15 @@
         <button style="border-color: rgb(204,204,204);" class="btn btn-default pull-right" ng-disabled="Detailsdisable" ng-click="details()">Details <i class="fa fa-angle-right" style="font-size:20px;"></i></button>
     </div>
 
-	<table class='table table-hover table-responsive' style="min-width: 100%;">
+	 <table class='table table-hover table-responsive' >
 		<thead>
-			<tr><th>#</th><th>Category</th><th>Name</th><th>Address</th><th>Favorite</th><th>Details</th></tr>
+			<tr><th>#</th><th>Name</th><th>Address</th><th>Details</th></tr>
 		</thead>
 		<tbody>
-  			<tr class="tablerow" id="{{x.place_id}}" ng-repeat="x in page" style="min-width: 100%;">
+  			<tr class="tablerow" id="{{x.place_id}}" ng-repeat="x in page">
     		<td style="min-width: 10%; vertical-align: middle !important;">{{$index+1}}</td>
-    		<td style="min-width: 20%; vertical-align: middle !important;"><img src="{{x.icon}}"></td>
     		<td style="min-width: 30%; vertical-align: middle !important;">{{x.name}}</td>
-    		<td style="min-width: 30%; vertical-align: middle !important;">{{x.vicinity}}</td>
-
-    		<td style="min-width: 5%; vertical-align: middle !important;"><button style="border-color: rgb(204,204,204);" class='btn btn-default' ng-click="storeplace(x.place_id,x.icon,x.name,x.vicinity)"><i class="fa fa-star-o"></i></button></td>
-
+                <td style="min-width: 30%; vertical-align: middle !important;">{{x.vicinity}}</td>
     		<td style="min-width: 5%;vertical-align: middle !important;"><button style="border-color: rgb(204,204,204);" class='btn btn-default' ng-click="showdetails(x.place_id)"><i class="fa fa-angle-right" style="font-size:20px"></i></button></td>
   			</tr>
   		</tbody>
